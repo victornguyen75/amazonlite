@@ -1,6 +1,7 @@
+import React from "react";
 import Head from "next/head";
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
       <Head>
@@ -12,4 +13,8 @@ export default function Home() {
       <h1 className="text-3xl font-bold">Amazonlite</h1>
     </div>
   );
-}
+};
+
+Home.displayName = "Home";
+
+export default Home;
