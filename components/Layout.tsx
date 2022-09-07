@@ -31,7 +31,9 @@ export const Layout = ({ title, children }: LayoutProps) => {
             </div>
           </nav>
         </header>
-        <main className="container m-auto mt-4 px-4 ml-0">{children}</main>
+        <main className="container px-4 mt-4 mb-auto mr-auto ml-0">
+          {children}
+        </main>
         <footer className="flex h-10 justify-center items-center shadow-inner">
           <p>Copyright © 2022 amazonlite</p>
         </footer>
