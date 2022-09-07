@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
+import { ReactNode, Fragment, FunctionComponent } from "react";
 import Head from "next/head";
 import Link from "next/link";
 
 interface LayoutProps {
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ title, children }) => {
+export const Layout: FunctionComponent<LayoutProps> = ({ title, children }) => {
   return (
     <Fragment>
       <Head>
