@@ -1,9 +1,6 @@
-import { FunctionComponent } from "react";
 import { Layout } from "../components";
 
-interface HomeProps {}
-
-const Home: FunctionComponent<HomeProps> = () => {
+const Home = (): JSX.Element => {
   return <Layout title="amazonlite">Home page</Layout>;
 };
 
