@@ -1,4 +1,21 @@
-export const data = {
+export interface Product {
+  name: string;
+  slug: string;
+  category: string;
+  image: string;
+  price: number;
+  brand: string;
+  rating: number;
+  numReviews: number;
+  countInStock: number;
+  description: string;
+}
+
+export interface dataProps {
+  products: Product[];
+}
+
+const data: dataProps = {
   products: [
     {
       name: "Free Shirt",
@@ -74,3 +91,5 @@ export const data = {
     },
   ],
 };
+
+export default data;
