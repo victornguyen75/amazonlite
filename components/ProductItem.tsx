@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "../utils/data";
-/* eslint-disable @next/next/no-img-element */
 
 interface ProductItemProps {
   product: Product;
@@ -11,9 +11,11 @@ export const ProductItem = ({ product }: ProductItemProps): JSX.Element => {
     <div className="card">
       <Link href={`/product/${product.slug}`}>
         <a>
-          <img
+          <Image
             src={product.image}
             alt={product.name}
+            height="362"
+            width="362"
             className="rounded shadow"
           />
         </a>
