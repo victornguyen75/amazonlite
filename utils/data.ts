@@ -15,7 +15,7 @@ export interface dataProps {
   products: Product[];
 }
 
-const data: dataProps = {
+export const data: dataProps = {
   products: [
     {
       name: "Free Shirt",
@@ -91,5 +91,3 @@ const data: dataProps = {
     },
   ],
 };
-
-export default data;

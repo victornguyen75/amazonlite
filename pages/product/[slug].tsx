@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Layout } from "../../components";
-import data from "../../utils/data";
+import { data } from "../../utils";
 
 export default function ProductScreen(): JSX.Element {
   const { query } = useRouter();
