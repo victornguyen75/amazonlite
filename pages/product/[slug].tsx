@@ -1,13 +1,16 @@
-import { useContext } from "react";
+import { useContext, Dispatch } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
 import { Layout } from "../../components";
-import { data, Store, Product } from "../../utils";
+import { data, Store, Product, CartState, ActionInterface } from "../../utils";
 
 export default function ProductScreen(): JSX.Element {
-  const { state, dispatch } = useContext(Store);
+  const { state, dispatch } = useContext<{
+    state: CartState;
+    dispatch: Dispatch<ActionInterface>;
+  }>(Store);
   const { query } = useRouter();
   const { slug } = query;
 

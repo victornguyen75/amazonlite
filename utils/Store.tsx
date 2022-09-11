@@ -9,11 +9,16 @@ export interface CartState {
   };
 }
 
+export interface ActionInterface {
+  type: string;
+  payload: Product;
+}
+
 const initialState: CartState = {
   cart: { items: [] },
 };
 
-const reducer = (state, action) => {
+const reducer = (state: CartState, action: ActionInterface) => {
   switch (action.type) {
     case "CART_ADD_ITEM": {
       const newItem: Product = action.payload;
