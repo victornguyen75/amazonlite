@@ -32,6 +32,11 @@ export default function ProductScreen(): JSX.Element {
     );
     const cartCount: number = existingItem ? existingItem.cartCount + 1 : 1;
 
+    if (product.stockCount < cartCount) {
+      alert("Sorry! This product is now out of stock.");
+      return;
+    }
+
     dispatch({
       type: "CART_ADD_ITEM",
       payload: {
