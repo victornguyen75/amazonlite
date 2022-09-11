@@ -3,7 +3,13 @@ import { Product } from "./data";
 
 export const Store = createContext({});
 
-const initialState = {
+export interface CartState {
+  cart: {
+    cartItems: Product[];
+  };
+}
+
+const initialState: CartState = {
   cart: { cartItems: [] },
 };
 
