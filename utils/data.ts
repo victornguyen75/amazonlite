@@ -8,6 +8,7 @@ export interface Product {
   rating: number;
   numReviews: number;
   stockCount: number;
+  cartCount: number;
   description: string;
 }
 
@@ -27,6 +28,7 @@ export const data: dataProps = {
       rating: 4.5,
       numReviews: 8,
       stockCount: 20,
+      cartCount: 0,
       description: "A popular shirt",
     },
     {
@@ -39,6 +41,7 @@ export const data: dataProps = {
       rating: 3.2,
       numReviews: 10,
       stockCount: 20,
+      cartCount: 0,
       description: "A popular shirt",
     },
     {
@@ -51,6 +54,7 @@ export const data: dataProps = {
       rating: 4.5,
       numReviews: 3,
       stockCount: 20,
+      cartCount: 0,
       description: "A popular shirt",
     },
     {
@@ -63,6 +67,7 @@ export const data: dataProps = {
       rating: 2.9,
       numReviews: 13,
       stockCount: 20,
+      cartCount: 0,
       description: "Smart looking pants",
     },
     {
@@ -75,6 +80,7 @@ export const data: dataProps = {
       rating: 3.5,
       numReviews: 7,
       stockCount: 20,
+      cartCount: 0,
       description: "A popular pants",
     },
     {
@@ -87,6 +93,7 @@ export const data: dataProps = {
       rating: 2.4,
       numReviews: 14,
       stockCount: 20,
+      cartCount: 0,
       description: "A popular pants",
     },
   ],

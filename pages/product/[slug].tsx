@@ -18,10 +18,10 @@ export default function ProductScreen(): JSX.Element {
   }
 
   const addToCart = () => {
-    const existingItem = state.cart.items.find(
+    const existingItem: Product = state.cart.items.find(
       (x: Product) => x.slug === product.slug
     );
-    const cartCount = existingItem ? existingItem.cartCount + 1 : 1;
+    const cartCount: number = existingItem ? existingItem.cartCount + 1 : 1;
 
     dispatch({
       type: "CART_ADD_ITEM",
