@@ -1,16 +1,16 @@
 import { createContext, useReducer } from "react";
 import { Product } from "./data";
 
-export const Store = createContext({});
+export const Store = createContext(undefined);
 
 export interface CartState {
   cart: {
-    cartItems: Product[];
+    items: Product[];
   };
 }
 
 const initialState: CartState = {
-  cart: { cartItems: [] },
+  cart: { items: [] },
 };
 
 const reducer = (state, action) => {
@@ -21,13 +21,13 @@ const reducer = (state, action) => {
         (item: Product) => item.slug === newItem.slug
       );
 
-      const updatedCart = existingItem
+      const items = existingItem
         ? state.cart.items.map((item: Product) =>
             item.name === existingItem.name ? newItem : item
           )
-        : [...state.cart.cartItems, newItem];
+        : [...state.cart.items, newItem];
 
-      return { ...state, cart: { ...state.cart, updatedCart } };
+      return { ...state, cart: { ...state.cart, items } };
     }
 
     default:

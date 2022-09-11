@@ -1,6 +1,8 @@
-import { ReactNode, Fragment } from "react";
+import { ReactNode, Fragment, useContext } from "react";
 import Head from "next/head";
 import Link from "next/link";
+
+import { Store } from "../utils";
 
 interface LayoutProps {
   title: string;
@@ -8,6 +10,8 @@ interface LayoutProps {
 }
 
 export const Layout = ({ title, children }: LayoutProps) => {
+  const { state } = useContext(Store);
+  const { cart } = state;
   return (
     <Fragment>
       <Head>
@@ -23,7 +27,17 @@ export const Layout = ({ title, children }: LayoutProps) => {
             </Link>
             <div>
               <Link href="/cart">
-                <a className="p-2">Cart</a>
+                <a className="p-2">
+                  Cart
+                  {cart.items.length > 0 && (
+                    <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                      {cart.items.reduce(
+                        (total, item) => total + item.quantity,
+                        0
+                      )}
+                    </span>
+                  )}
+                </a>
               </Link>
               <Link href="/login">
                 <a className="p-2">Login</a>

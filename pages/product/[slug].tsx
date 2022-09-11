@@ -1,11 +1,13 @@
+import { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
 import { Layout } from "../../components";
-import { data } from "../../utils";
+import { data, Store, Product } from "../../utils";
 
 export default function ProductScreen(): JSX.Element {
+  const { state, dispatch } = useContext(Store);
   const { query } = useRouter();
   const { slug } = query;
 
@@ -14,6 +16,21 @@ export default function ProductScreen(): JSX.Element {
   if (!product) {
     return <div>Product not found.</div>;
   }
+
+  const addToCart = () => {
+    const existingItem = state.cart.items.find(
+      (x: Product) => x.slug === product.slug
+    );
+    const quantity = existingItem ? existingItem.quantity + 1 : 1;
+
+    dispatch({
+      type: "CART_ADD_ITEM",
+      payload: {
+        ...product,
+        quantity,
+      },
+    });
+  };
 
   return (
     <Layout title={product.name}>
@@ -53,7 +70,9 @@ export default function ProductScreen(): JSX.Element {
               <div>Status</div>
               <div>{product.countInStock > 0 ? "in Stock" : "Unavailable"}</div>
             </div>
-            <button className="primary-button w-full">Add to Cart</button>
+            <button className="primary-button w-full" onClick={addToCart}>
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
