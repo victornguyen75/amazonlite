@@ -21,13 +21,13 @@ export default function ProductScreen(): JSX.Element {
     const existingItem = state.cart.items.find(
       (x: Product) => x.slug === product.slug
     );
-    const quantity = existingItem ? existingItem.quantity + 1 : 1;
+    const cartCount = existingItem ? existingItem.cartCount + 1 : 1;
 
     dispatch({
       type: "CART_ADD_ITEM",
       payload: {
         ...product,
-        quantity,
+        cartCount,
       },
     });
   };
@@ -68,7 +68,7 @@ export default function ProductScreen(): JSX.Element {
             </div>
             <div className="mb-2 flex-justify-between">
               <div>Status</div>
-              <div>{product.countInStock > 0 ? "in Stock" : "Unavailable"}</div>
+              <div>{product.stockCount > 0 ? "in Stock" : "Unavailable"}</div>
             </div>
             <button className="primary-button w-full" onClick={addToCart}>
               Add to Cart

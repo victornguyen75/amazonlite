@@ -7,7 +7,7 @@ export interface Product {
   brand: string;
   rating: number;
   numReviews: number;
-  countInStock: number;
+  stockCount: number;
   description: string;
 }
 
@@ -26,7 +26,7 @@ export const data: dataProps = {
       brand: "Nike",
       rating: 4.5,
       numReviews: 8,
-      countInStock: 20,
+      stockCount: 20,
       description: "A popular shirt",
     },
     {
@@ -38,7 +38,7 @@ export const data: dataProps = {
       brand: "Adidas",
       rating: 3.2,
       numReviews: 10,
-      countInStock: 20,
+      stockCount: 20,
       description: "A popular shirt",
     },
     {
@@ -50,7 +50,7 @@ export const data: dataProps = {
       brand: "Raymond",
       rating: 4.5,
       numReviews: 3,
-      countInStock: 20,
+      stockCount: 20,
       description: "A popular shirt",
     },
     {
@@ -62,7 +62,7 @@ export const data: dataProps = {
       brand: "Oliver",
       rating: 2.9,
       numReviews: 13,
-      countInStock: 20,
+      stockCount: 20,
       description: "Smart looking pants",
     },
     {
@@ -74,7 +74,7 @@ export const data: dataProps = {
       brand: "Zara",
       rating: 3.5,
       numReviews: 7,
-      countInStock: 20,
+      stockCount: 20,
       description: "A popular pants",
     },
     {
@@ -86,7 +86,7 @@ export const data: dataProps = {
       brand: "Casely",
       rating: 2.4,
       numReviews: 14,
-      countInStock: 20,
+      stockCount: 20,
       description: "A popular pants",
     },
   ],

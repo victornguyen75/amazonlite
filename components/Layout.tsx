@@ -32,7 +32,7 @@ export const Layout = ({ title, children }: LayoutProps) => {
                   {cart.items.length > 0 && (
                     <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
                       {cart.items.reduce(
-                        (total, item) => total + item.quantity,
+                        (total, item) => total + item.cartCount,
                         0
                       )}
                     </span>
