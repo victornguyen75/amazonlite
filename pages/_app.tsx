@@ -1,8 +1,13 @@
 import React from "react";
+import { StoreProvider } from "../utils";
 import "../styles/globals.css";
 
 const App = ({ Component, pageProps }): JSX.Element => {
-  return <Component {...pageProps} />;
+  return (
+    <StoreProvider>
+      <Component {...pageProps} />
+    </StoreProvider>
+  );
 };
 
 App.displayName = "App";
