@@ -4,11 +4,17 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Layout } from "../../components";
-import { data, Store, Product, CartState, ActionInterface } from "../../utils";
+import {
+  data,
+  Store,
+  Product,
+  CartInterface,
+  ActionInterface,
+} from "../../utils";
 
 export default function ProductScreen(): JSX.Element {
   const { state, dispatch } = useContext<{
-    state: CartState;
+    state: CartInterface;
     dispatch: Dispatch<ActionInterface>;
   }>(Store);
   const { query } = useRouter();

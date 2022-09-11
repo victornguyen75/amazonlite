@@ -3,7 +3,7 @@ import { Product } from "./data";
 
 export const Store = createContext(undefined);
 
-export interface CartState {
+export interface CartInterface {
   cart: {
     items: Product[];
   };
@@ -14,11 +14,11 @@ export interface ActionInterface {
   payload: Product;
 }
 
-const initialState: CartState = {
+const initialState: CartInterface = {
   cart: { items: [] },
 };
 
-const reducer = (state: CartState, action: ActionInterface) => {
+const reducer = (state: CartInterface, action: ActionInterface) => {
   switch (action.type) {
     case "CART_ADD_ITEM": {
       const newItem: Product = action.payload;
