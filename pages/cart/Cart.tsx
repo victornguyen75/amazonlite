@@ -13,8 +13,16 @@ export default function Cart(): JSX.Element {
   const {
     cart: { items },
   } = state;
+
   const removeItem = (item: Product) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+  };
+
+  const updateCart = (item: Product, quantity: number) => {
+    dispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...item, cartCount: quantity },
+    });
   };
 
   return (
@@ -61,7 +69,20 @@ export default function Cart(): JSX.Element {
                         </a>
                       </Link>
                     </td>
-                    <td className="p-5 text-right">{item.cartCount}</td>
+                    <td className="p-5 text-right">
+                      <select
+                        value={item.cartCount}
+                        onChange={(e) =>
+                          updateCart(item, Number(e.target.value))
+                        }
+                      >
+                        {Array.from(Array(item.stockCount).keys()).map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
                     <td className="p-5 text-right">${item.price}</td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItem(item)}>
