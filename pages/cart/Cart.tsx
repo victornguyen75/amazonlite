@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { XCircleIcon } from "@heroicons/react/outline";
 
 import { Layout } from "../../components";
 import { Store, Product } from "../../utils";
 
 export default function Cart(): JSX.Element {
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
     cart: { items },
   } = state;
-
   const removeItem = (item: Product) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
@@ -73,6 +74,33 @@ export default function Cart(): JSX.Element {
                 ))}
               </tbody>
             </table>
+          </div>
+          <div className="card p-5">
+            <ul>
+              <li>
+                <div className="pb-3 text-xl">
+                  Subtotal (
+                  {items.reduce(
+                    (total: number, item: Product) => total + item.cartCount,
+                    0
+                  )}
+                  ) : $
+                  {items.reduce(
+                    (total: number, item: Product) =>
+                      total + item.cartCount * item.price,
+                    0
+                  )}
+                </div>
+              </li>
+              <li>
+                <button
+                  onClick={() => router.push("/shipping")}
+                  className="primary-button w-full"
+                >
+                  Checkout
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       )}
