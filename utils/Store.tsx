@@ -30,22 +30,28 @@ const reducer = (state: CartInterface, action: ActionInterface) => {
         (item: Product) => item.slug === newItem.slug
       );
 
-      const items: Product[] = existingItem
+      const updatedItems: Product[] = existingItem
         ? state.cart.items.map((item: Product) =>
             item.name === existingItem.name ? newItem : item
           )
         : [...state.cart.items, newItem];
 
-      Cookies.set("cart", JSON.stringify({ ...state.cart, items }));
-      return { ...state, cart: { ...state.cart, items } };
+      Cookies.set(
+        "cart",
+        JSON.stringify({ ...state.cart, items: updatedItems })
+      );
+      return { ...state, cart: { ...state.cart, items: updatedItems } };
     }
     case "CART_REMOVE_ITEM": {
       const updatedItems = state.cart.items.filter(
         (item) => item.slug !== action.payload.slug
       );
 
-      Cookies.set("cart", JSON.stringify({ ...state.cart, updatedItems }));
-      return { ...state, cart: { ...state.cart, updatedItems } };
+      Cookies.set(
+        "cart",
+        JSON.stringify({ ...state.cart, items: updatedItems })
+      );
+      return { ...state, cart: { ...state.cart, items: updatedItems } };
     }
     default:
       return state;
