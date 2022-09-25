@@ -32,10 +32,7 @@ export default function Cart(): JSX.Element {
         <div>
           Cart is empty.{" "}
           <Link href="/">
-            <button
-              className="bg-transparent border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-center py-2 px-4 rounded"
-              type="button"
-            >
+            <button className="primary-button" type="button">
               Go Shopping
             </button>
           </Link>
