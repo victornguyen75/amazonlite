@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { XCircleIcon } from "@heroicons/react/outline";
 
 import { Layout } from "../../components";
 import { Store, Product } from "../../utils";
 
-export default function Cart(): JSX.Element {
+function Cart(): JSX.Element {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -127,3 +128,5 @@ export default function Cart(): JSX.Element {
 }
 
 Cart.displayName = "Cart";
+
+export default dynamic(() => Promise.resolve(Cart), { ssr: false });

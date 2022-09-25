@@ -1,8 +1,8 @@
-import { ReactNode, Fragment, useContext } from "react";
+import { useEffect, useState, ReactNode, Fragment, useContext } from "react";
 import Head from "next/head";
 import Link from "next/link";
 
-import { Store } from "../utils";
+import { Store, Product } from "../utils";
 
 interface LayoutProps {
   title: string;
@@ -12,6 +12,17 @@ interface LayoutProps {
 export const Layout = ({ title, children }: LayoutProps) => {
   const { state } = useContext(Store);
   const { cart } = state;
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    setCartCount(
+      cart.items.reduce(
+        (total: number, item: Product) => total + item.cartCount,
+        0
+      )
+    );
+  }, [cart.items]);
+
   return (
     <Fragment>
       <Head>
@@ -29,12 +40,9 @@ export const Layout = ({ title, children }: LayoutProps) => {
               <Link href="/cart">
                 <a className="p-2">
                   Cart
-                  {cart.items.length > 0 && (
+                  {cartCount > 0 && (
                     <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
-                      {cart.items.reduce(
-                        (total, item) => total + item.cartCount,
-                        0
-                      )}
+                      {cartCount}
                     </span>
                   )}
                 </a>
