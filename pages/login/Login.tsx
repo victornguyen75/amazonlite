@@ -10,21 +10,11 @@ export default function Login() {
         <h1 className="mb-4 text-xl">Login</h1>
         <div className="mb-4">
           <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            className="w-full outline outline-1"
-            autoFocus
-          />
+          <input id="email" type="email" className="w-full" autoFocus />
         </div>
         <div className="mb-4">
           <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            className="w-full outline outline-1"
-            autoFocus
-          />
+          <input id="password" type="password" className="w-full" autoFocus />
         </div>
         <div className="mb-4">
           <button className="primary-button">Login</button>
