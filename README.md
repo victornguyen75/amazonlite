@@ -6,3 +6,7 @@ An Amazon clone made with
 - TypeScript
 - Tailwind CSS
 - Cloud MongoDB
+
+Requirements
+
+- a MongoDB connection set as the `MONGODB_URI` env variable
