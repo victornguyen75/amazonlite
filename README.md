@@ -1,3 +1,8 @@
 ## amazonlite
 
-An Amazon clone made with NextJS, TypeScript, and Tailwind CSS.
+An Amazon clone made with
+
+- NextJS
+- TypeScript
+- Tailwind CSS
+- Cloud MongoDB
