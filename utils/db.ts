@@ -1,4 +1,4 @@
-import mongoose, { ConnectionStates } from "mongoose";
+import { ConnectionStates } from "mongoose";
 
 interface IConnection {
   isConnected: ConnectionStates;
@@ -9,34 +9,50 @@ const connection: IConnection = {
 };
 
 const connect = async () => {
-  if (connection.isConnected) {
-    console.log("Already connected");
-    return;
-  }
+  try {
+    // Dynamically load mongoose
+    const mongoose = (await import("mongoose")).default;
 
-  if (mongoose.connections.length > 0) {
-    connection.isConnected = mongoose.connections[0].readyState;
-    if (connection.isConnected === 1) {
-      console.log("Use previous connection");
+    if (connection.isConnected) {
+      console.log("Already connected");
       return;
     }
 
-    await mongoose.disconnect();
-  }
+    if (mongoose.connections.length > 0) {
+      connection.isConnected = mongoose.connections[0].readyState;
+      if (connection.isConnected === 1) {
+        console.log("Use previous connection");
+        return;
+      }
 
-  const db = await mongoose.connect(process.env.MONGODB_URI);
-  console.log("New connection");
-  connection.isConnected = db.connections[0].readyState;
+      await mongoose.disconnect();
+    }
+
+    const db = await mongoose.connect(process.env.MONGODB_URI);
+    console.log("New connection");
+    connection.isConnected = db.connections[0].readyState;
+  } catch (error) {
+    console.error("Error during the connection! ", error);
+    process.exit(1);
+  }
 };
 
 const disconnect = async () => {
-  if (connection.isConnected) {
-    if (process.env.NODE_ENV === "production") {
-      await mongoose.disconnect();
-      connection.isConnected = 0;
-    } else {
-      console.log("Not disconnected");
+  try {
+    // Dynamically load mongoose
+    const mongoose = (await import("mongoose")).default;
+
+    if (connection.isConnected) {
+      if (process.env.NODE_ENV === "production") {
+        await mongoose.disconnect();
+        connection.isConnected = 0;
+      } else {
+        console.log("Not disconnected");
+      }
     }
+  } catch (error) {
+    console.error("Error during the disconnection! ", error);
+    process.exit(1);
   }
 };
 
