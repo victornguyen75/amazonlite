@@ -34,7 +34,7 @@ export default function ProductScreen(): JSX.Element {
     const cartCount: number = existingItem ? existingItem.cartCount + 1 : 1;
 
     if (product.stockCount < cartCount) {
-      toast?.pushWarning("Sorry! This product is now out of stock.");
+      toast.pushWarning("Sorry! This product is now out of stock.");
       return;
     }
 
@@ -46,7 +46,7 @@ export default function ProductScreen(): JSX.Element {
       },
     });
 
-    toast?.pushSuccess("Item added");
+    toast.pushSuccess("Item added");
   };
 
   return (

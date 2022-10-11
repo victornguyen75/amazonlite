@@ -23,7 +23,7 @@ export const ProductItem = ({ product }: ProductItemProps): JSX.Element => {
     const cartCount: number = existingItem ? existingItem.cartCount + 1 : 1;
 
     if (product.stockCount < cartCount) {
-      toast?.pushWarning("Sorry! This product is now out of stock.");
+      toast.pushWarning("Sorry! This product is now out of stock.");
       return;
     }
 
@@ -34,7 +34,7 @@ export const ProductItem = ({ product }: ProductItemProps): JSX.Element => {
         cartCount,
       },
     });
-    toast?.pushSuccess("Item added");
+    toast.pushSuccess("Item added");
   };
 
   return (
