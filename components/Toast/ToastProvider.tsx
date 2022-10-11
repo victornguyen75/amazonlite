@@ -109,7 +109,7 @@ export const ToastProvider = ({ children, variant }: ToastProviderProps) => {
       icon?: IconProp
     ) => {
       if (message) {
-        const new_item: Toast = {
+        const newItem: Toast = {
           id: uuidv4(),
           message: message,
           lifetime: lifetime ? lifetime : DEFAULT_INTERVAL,
@@ -118,7 +118,7 @@ export const ToastProvider = ({ children, variant }: ToastProviderProps) => {
           type: undefined,
         };
 
-        setData((prevState) => [...prevState, new_item]);
+        setData((prevState) => [...prevState, newItem]);
       }
     },
     [setData]
@@ -145,8 +145,8 @@ export const ToastProvider = ({ children, variant }: ToastProviderProps) => {
     [Push]
   );
 
-  const ToastContex = useCallback(() => {
-    return {
+  const ToastModel = useCallback(
+    () => ({
       data: data,
       pushError: PushError,
       pushWarning: PushWarning,
@@ -158,20 +158,21 @@ export const ToastProvider = ({ children, variant }: ToastProviderProps) => {
       async remove(id: string) {
         setData((prevState) => prevState.filter((e) => e.id != id));
       },
-    };
-  }, [
-    data,
-    setData,
-    PushError,
-    PushWarning,
-    PushSuccess,
-    PushInfo,
-    Push,
-    PushCustom,
-  ]);
+    }),
+    [
+      data,
+      setData,
+      PushError,
+      PushWarning,
+      PushSuccess,
+      PushInfo,
+      Push,
+      PushCustom,
+    ]
+  );
 
   return (
-    <ToastContext.Provider value={ToastContex()}>
+    <ToastContext.Provider value={ToastModel()}>
       <ToastContainer variant={variant} />
       {children}
     </ToastContext.Provider>
