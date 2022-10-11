@@ -125,7 +125,7 @@ export default function ToastMessage({
         >
           <FontAwesomeIcon
             className={clsx(
-              "mx-auto my-auto h-full text-center text-gray-600 cursor-pointer hover:scale-105 transform "
+              "mx-auto my-auto text-center text-gray-600 cursor-pointer hover:scale-105 transform "
             )}
             icon={faTimes}
           />
