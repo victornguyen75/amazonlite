@@ -5,10 +5,11 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { XCircleIcon } from "@heroicons/react/outline";
 
-import { Layout } from "../../components";
+import { useToast, Layout } from "../../components";
 import { Store, Product } from "../../utils";
 
 function Cart(): JSX.Element {
+  const toast = useToast();
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -17,6 +18,7 @@ function Cart(): JSX.Element {
 
   const removeItem = (item: Product) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+    toast.pushSuccess("Successfully removed item");
   };
 
   const updateCart = (item: Product, quantity: number) => {
@@ -24,6 +26,12 @@ function Cart(): JSX.Element {
       type: "CART_ADD_ITEM",
       payload: { ...item, cartCount: quantity },
     });
+    toast.pushSuccess("Successfully updated item");
+  };
+
+  const handleCheckout = () => {
+    toast.pushInfo("Redirecting to checkout...");
+    router.push("login?redirect=/shipping");
   };
 
   return (
@@ -113,7 +121,7 @@ function Cart(): JSX.Element {
               </li>
               <li>
                 <button
-                  onClick={() => router.push("login?redirect=/shipping")}
+                  onClick={handleCheckout}
                   className="primary-button w-full"
                 >
                   Checkout
