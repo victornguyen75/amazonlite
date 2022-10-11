@@ -1,11 +1,14 @@
 import React from "react";
 import { StoreProvider } from "../utils";
+import { ToastProvider } from "../components/Toast";
 import "../styles/globals.css";
 
 const App = ({ Component, pageProps }): JSX.Element => {
   return (
     <StoreProvider>
-      <Component {...pageProps} />
+      <ToastProvider>
+        <Component {...pageProps} />
+      </ToastProvider>
     </StoreProvider>
   );
 };

@@ -3,12 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Store, Product, CartInterface, ActionInterface } from "../utils";
+import { useToast } from "../components";
 
 interface ProductItemProps {
   product: Product;
 }
 
 export const ProductItem = ({ product }: ProductItemProps): JSX.Element => {
+  const toast = useToast();
   const { state, dispatch } = useContext<{
     state: CartInterface;
     dispatch: Dispatch<ActionInterface>;
@@ -21,7 +23,7 @@ export const ProductItem = ({ product }: ProductItemProps): JSX.Element => {
     const cartCount: number = existingItem ? existingItem.cartCount + 1 : 1;
 
     if (product.stockCount < cartCount) {
-      alert("Sorry! This product is now out of stock.");
+      toast?.pushWarning("Sorry! This product is now out of stock.");
       return;
     }
 
@@ -32,6 +34,7 @@ export const ProductItem = ({ product }: ProductItemProps): JSX.Element => {
         cartCount,
       },
     });
+    toast?.pushSuccess("Item added");
   };
 
   return (

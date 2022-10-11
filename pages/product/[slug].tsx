@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Layout } from "../../components";
+import { useToast, Layout } from "../../components";
 import {
   data,
   Store,
@@ -13,6 +13,7 @@ import {
 } from "../../utils";
 
 export default function ProductScreen(): JSX.Element {
+  const toast = useToast();
   const { state, dispatch } = useContext<{
     state: CartInterface;
     dispatch: Dispatch<ActionInterface>;
@@ -33,7 +34,7 @@ export default function ProductScreen(): JSX.Element {
     const cartCount: number = existingItem ? existingItem.cartCount + 1 : 1;
 
     if (product.stockCount < cartCount) {
-      alert("Sorry! This product is now out of stock.");
+      toast?.pushWarning("Sorry! This product is now out of stock.");
       return;
     }
 
@@ -44,6 +45,8 @@ export default function ProductScreen(): JSX.Element {
         cartCount,
       },
     });
+
+    toast?.pushSuccess("Item added");
   };
 
   return (
