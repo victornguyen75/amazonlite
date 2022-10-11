@@ -8,7 +8,7 @@ import { XCircleIcon } from "@heroicons/react/outline";
 import { useToast, Layout } from "../../components";
 import { Store, Product } from "../../utils";
 
-function Cart(): JSX.Element {
+const Cart = (): JSX.Element => {
   const toast = useToast();
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
@@ -133,7 +133,7 @@ function Cart(): JSX.Element {
       )}
     </Layout>
   );
-}
+};
 
 Cart.displayName = "Cart";
 

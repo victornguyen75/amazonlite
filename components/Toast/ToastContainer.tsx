@@ -1,6 +1,7 @@
-// import clsx from "clsx";
 import React, { useContext } from "react";
-import ToastMessage from "./ToastMessage";
+import clsx from "clsx";
+
+import { ToastMessage } from "./ToastMessage";
 import { ToastContext } from "./ToastProvider";
 
 export interface ToastContainerProps {
@@ -44,19 +45,22 @@ export const ToastContainer = ({
 
   return (
     <div
-      className={`${Var.style} fixed z-50 w-full md:max-w-sm p-4 md:p-4 max-h-screen overflow-hidden pointer-events-none`}
+      className={clsx(
+        Var.style,
+        "fixed z-50 w-full md:max-w-sm p-4 md:p-4 max-h-screen overflow-hidden pointer-events-none"
+      )}
     >
       <div
-        className={
+        className={clsx(
           "flex-1 flex-col fade w-full mr-8 justify-end pointer-events-none"
-        }
+        )}
       >
         {context?.data.map((toast) => (
           <div
             key={toast.id}
-            className={
+            className={clsx(
               "flex py-1 w-full transform transition-all duration-300 pointer-events-auto"
-            }
+            )}
           >
             <ToastMessage
               id={toast.id}

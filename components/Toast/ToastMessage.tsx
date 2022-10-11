@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Toast } from "./ToastProvider";
+import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
@@ -7,7 +7,8 @@ import {
   faCheck,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import clsx from "clsx";
+
+import { Toast } from "./ToastProvider";
 
 const VARIANTS = {
   Info: {
@@ -52,7 +53,7 @@ export type ToastMessage = {
   truncate?: Truncate;
 } & Toast;
 
-export default function ToastMessage({
+export const ToastMessage = ({
   id,
   header,
   message,
@@ -61,7 +62,7 @@ export default function ToastMessage({
   truncate = "truncate-1-lines",
   icon,
   type,
-}: ToastMessage) {
+}: ToastMessage) => {
   const Var = type
     ? VARIANTS[type]
     : {
@@ -133,4 +134,4 @@ export default function ToastMessage({
       </div>
     </div>
   );
-}
+};
