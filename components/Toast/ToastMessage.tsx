@@ -119,7 +119,7 @@ export default function ToastMessage({
         <div
           onClick={() => onRemove && onRemove(id)}
           className={clsx(
-            "w-10 h-12 mr-2 items-center mx-auto",
+            "w-4 h-12 mr-2 items-center mx-auto",
             "text-center leading-none text-lg"
           )}
         >
