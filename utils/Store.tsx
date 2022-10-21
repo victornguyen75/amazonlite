@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, ReactNode } from "react";
 import Cookies from "js-cookie";
 
 import { Product } from "./data";
@@ -58,7 +58,11 @@ const reducer = (state: CartInterface, action: ActionInterface) => {
   }
 };
 
-export const StoreProvider = ({ children }) => {
+interface StoreProps {
+  children: ReactNode;
+}
+
+export const StoreProvider = ({ children }: StoreProps): JSX.Element => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const value = { state, dispatch };
   return <Store.Provider value={value}>{children}</Store.Provider>;
