@@ -1,15 +1,19 @@
 import React from "react";
+import { SessionProvider } from "next-auth/react";
 import { StoreProvider } from "../utils";
 import { ToastProvider } from "../components/Toast";
 import "../styles/globals.css";
 
 const App = ({ Component, pageProps }): JSX.Element => {
+  const { session, ...props } = pageProps;
   return (
-    <StoreProvider>
-      <ToastProvider>
-        <Component {...pageProps} />
-      </ToastProvider>
-    </StoreProvider>
+    <SessionProvider session={session}>
+      <StoreProvider>
+        <ToastProvider>
+          <Component {...props} />
+        </ToastProvider>
+      </StoreProvider>
+    </SessionProvider>
   );
 };
 

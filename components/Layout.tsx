@@ -1,6 +1,7 @@
 import { useEffect, useState, ReactNode, Fragment, useContext } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 import { Store, Product } from "../utils";
 
@@ -10,6 +11,8 @@ interface LayoutProps {
 }
 
 export const Layout = ({ title, children }: LayoutProps) => {
+  const { status, data: session } = useSession();
+
   const { state } = useContext(Store);
   const { cart } = state;
   const [cartCount, setCartCount] = useState(0);
@@ -47,9 +50,15 @@ export const Layout = ({ title, children }: LayoutProps) => {
                   )}
                 </a>
               </Link>
-              <Link href="/login">
-                <a className="p-2">Login</a>
-              </Link>
+              {status === "loading" ? (
+                "Loading"
+              ) : session?.user ? (
+                session.user.name
+              ) : (
+                <Link href="/login">
+                  <a className="p-2">Login</a>
+                </Link>
+              )}
             </div>
           </nav>
         </header>
