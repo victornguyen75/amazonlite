@@ -1,4 +1,11 @@
-import { useEffect, useState, ReactNode, Fragment, useContext } from "react";
+import {
+  useState,
+  useEffect,
+  useMemo,
+  useContext,
+  ReactNode,
+  Fragment,
+} from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -26,6 +33,20 @@ export const Layout = ({ title, children }: LayoutProps) => {
     );
   }, [cart.items]);
 
+  const Username = useMemo(() => {
+    if (status === "loading") {
+      return "Loading";
+    } else if (session?.user) {
+      return session.user.name;
+    } else {
+      return (
+        <Link href="/login">
+          <a className="p-2">Login</a>
+        </Link>
+      );
+    }
+  }, [status, session]);
+
   return (
     <Fragment>
       <Head>
@@ -50,15 +71,7 @@ export const Layout = ({ title, children }: LayoutProps) => {
                   )}
                 </a>
               </Link>
-              {status === "loading" ? (
-                "Loading"
-              ) : session?.user ? (
-                session.user.name
-              ) : (
-                <Link href="/login">
-                  <a className="p-2">Login</a>
-                </Link>
-              )}
+              {Username}
             </div>
           </nav>
         </header>
