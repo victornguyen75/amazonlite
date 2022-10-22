@@ -13,22 +13,20 @@ export interface CartInterface {
   };
 }
 
-export interface ActionInterface {
-  type: string;
-  payload: Product;
-}
-
-const defaultCartState = {
+const defaultCart = {
   items: [],
   shippingAddress: { location: {} },
   paymentMethod: "",
 };
 
-const initialState: CartInterface = {
-  cart: Cookies.get("cart")
-    ? JSON.parse(Cookies.get("cart"))
-    : defaultCartState,
+const initialCart: CartInterface = {
+  cart: Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : defaultCart,
 };
+
+export interface ActionInterface {
+  type: string;
+  payload: Product;
+}
 
 const reducer = (state: CartInterface, action: ActionInterface) => {
   switch (action.type) {
@@ -64,7 +62,7 @@ const reducer = (state: CartInterface, action: ActionInterface) => {
     case "CART_RESET": {
       return {
         ...state,
-        cart: defaultCartState,
+        cart: defaultCart,
       };
     }
     default:
@@ -77,7 +75,7 @@ interface StoreProps {
 }
 
 export const StoreProvider = ({ children }: StoreProps): JSX.Element => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialCart);
   const value = { state, dispatch };
   return <Store.Provider value={value}>{children}</Store.Provider>;
 };
