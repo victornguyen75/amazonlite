@@ -10,12 +10,14 @@ interface ProviderProps {
 
 declare type ISODateString = string;
 
-interface Session {
-  user?: {
-    name?: string | null;
-    email?: string | null;
-    image?: string | null;
-  };
+export interface User {
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+}
+
+export interface Session {
+  user?: User;
   expires: ISODateString;
 }
 
