@@ -8,6 +8,8 @@ export const Store = createContext(undefined);
 export interface CartInterface {
   cart: {
     items: Product[];
+    shippingAddress: { location: {} };
+    paymentMethod: string;
   };
 }
 
@@ -16,10 +18,16 @@ export interface ActionInterface {
   payload: Product;
 }
 
-const defaultState = { items: [] };
+const defaultCartState = {
+  items: [],
+  shippingAddress: { location: {} },
+  paymentMethod: "",
+};
 
 const initialState: CartInterface = {
-  cart: Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : defaultState,
+  cart: Cookies.get("cart")
+    ? JSON.parse(Cookies.get("cart"))
+    : defaultCartState,
 };
 
 const reducer = (state: CartInterface, action: ActionInterface) => {
@@ -56,11 +64,7 @@ const reducer = (state: CartInterface, action: ActionInterface) => {
     case "CART_RESET": {
       return {
         ...state,
-        cart: {
-          items: [],
-          shippingAddress: { location: {} },
-          paymentMethod: "",
-        },
+        cart: defaultCartState,
       };
     }
     default:
