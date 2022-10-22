@@ -8,9 +8,11 @@ import {
 } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
+import Cookies from "js-cookie";
 
 import { Store, Product } from "../utils";
+import { UserMenu } from "./index";
 
 interface LayoutProps {
   title: string;
@@ -20,7 +22,7 @@ interface LayoutProps {
 export const Layout = ({ title, children }: LayoutProps) => {
   const { status, data: session } = useSession();
 
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const [cartCount, setCartCount] = useState(0);
 
@@ -33,19 +35,11 @@ export const Layout = ({ title, children }: LayoutProps) => {
     );
   }, [cart.items]);
 
-  const Username = useMemo(() => {
-    if (status === "loading") {
-      return "Loading";
-    } else if (session?.user) {
-      return session.user.name;
-    } else {
-      return (
-        <Link href="/login">
-          <a className="p-2">Login</a>
-        </Link>
-      );
-    }
-  }, [status, session]);
+  const handleLogout = () => {
+    Cookies.remove("cart");
+    dispatch({ type: "CART_RESET" });
+    signOut({ callbackUrl: "/login" });
+  };
 
   return (
     <Fragment>
@@ -71,7 +65,11 @@ export const Layout = ({ title, children }: LayoutProps) => {
                   )}
                 </a>
               </Link>
-              {Username}
+              <UserMenu
+                status={status}
+                user={session?.user}
+                handleLogout={handleLogout}
+              />
             </div>
           </nav>
         </header>
