@@ -24,12 +24,12 @@ const initalState: State = {
   cart: Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : defaultCart,
 };
 
-export interface ActionInterface {
+export interface Action {
   type: string;
   payload: Product;
 }
 
-const reducer = (state: State, action: ActionInterface) => {
+const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case "CART_ADD_ITEM": {
       const newItem: Product = action.payload;

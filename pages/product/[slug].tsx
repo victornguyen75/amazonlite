@@ -4,13 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { useToast, Layout } from "../../components";
-import { data, Store, Product, State, ActionInterface } from "../../utils";
+import { data, Store, Product, State, Action } from "../../utils";
 
 export default function ProductScreen(): JSX.Element {
   const toast = useToast();
   const { state, dispatch } = useContext<{
     state: State;
-    dispatch: Dispatch<ActionInterface>;
+    dispatch: Dispatch<Action>;
   }>(Store);
   const { query } = useRouter();
   const { slug } = query;
