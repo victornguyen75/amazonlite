@@ -93,7 +93,11 @@ export default function Login() {
         </div>
         <div className="mb-4">
           Don&apos;t have an account? &nbsp;
-          <Link href="/register">Register</Link>
+          <Link href="/register">
+            <span className="cursor-pointer text-blue-600 hover:text-blue-800">
+              Register
+            </span>
+          </Link>
         </div>
       </form>
     </Layout>
