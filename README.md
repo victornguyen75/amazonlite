@@ -6,6 +6,7 @@ An Amazon clone made with
 - NextJS
 - TypeScript
 - Tailwind CSS
+- Headless UI
 - Cloud MongoDB
 
 Requirements
