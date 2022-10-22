@@ -52,7 +52,7 @@ export const Layout = ({ title, children }: LayoutProps) => {
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md">
             <Link href="/">
-              <a className="text-lg font-bold">amazonlite</a>
+              <a className="text-2xl font-black">amazonlite</a>
             </Link>
             <div>
               <Link href="/cart">
