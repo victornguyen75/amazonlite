@@ -53,6 +53,16 @@ const reducer = (state: CartInterface, action: ActionInterface) => {
       );
       return { ...state, cart: { ...state.cart, items: updatedItems } };
     }
+    case "CART_RESET": {
+      return {
+        ...state,
+        cart: {
+          items: [],
+          shippingAddress: { location: {} },
+          paymentMethod: "",
+        },
+      };
+    }
     default:
       return state;
   }
