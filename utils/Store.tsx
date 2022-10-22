@@ -5,21 +5,22 @@ import { Product } from "./data";
 
 export const Store = createContext(undefined);
 
+export interface State {
+  cart: CartInterface;
+}
 export interface CartInterface {
-  cart: {
-    items: Product[];
-    shippingAddress: { location: {} };
-    paymentMethod: string;
-  };
+  items: Product[];
+  shippingAddress: { location: {} };
+  paymentMethod: string;
 }
 
-const defaultCart = {
+const defaultCart: CartInterface = {
   items: [],
   shippingAddress: { location: {} },
   paymentMethod: "",
 };
 
-const initialCart: CartInterface = {
+const initalState: State = {
   cart: Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : defaultCart,
 };
 
@@ -28,7 +29,7 @@ export interface ActionInterface {
   payload: Product;
 }
 
-const reducer = (state: CartInterface, action: ActionInterface) => {
+const reducer = (state: State, action: ActionInterface) => {
   switch (action.type) {
     case "CART_ADD_ITEM": {
       const newItem: Product = action.payload;
@@ -75,7 +76,7 @@ interface StoreProps {
 }
 
 export const StoreProvider = ({ children }: StoreProps): JSX.Element => {
-  const [state, dispatch] = useReducer(reducer, initialCart);
+  const [state, dispatch] = useReducer(reducer, initalState);
   const value = { state, dispatch };
   return <Store.Provider value={value}>{children}</Store.Provider>;
 };

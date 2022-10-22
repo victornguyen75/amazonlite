@@ -2,7 +2,7 @@ import { useContext, Dispatch } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Store, Product, CartInterface, ActionInterface } from "../utils";
+import { Store, Product, State, ActionInterface } from "../utils";
 import { useToast } from "../components";
 
 interface ProductItemProps {
@@ -12,7 +12,7 @@ interface ProductItemProps {
 export const ProductItem = ({ product }: ProductItemProps): JSX.Element => {
   const toast = useToast();
   const { state, dispatch } = useContext<{
-    state: CartInterface;
+    state: State;
     dispatch: Dispatch<ActionInterface>;
   }>(Store);
 

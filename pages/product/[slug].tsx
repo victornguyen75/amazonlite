@@ -4,18 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { useToast, Layout } from "../../components";
-import {
-  data,
-  Store,
-  Product,
-  CartInterface,
-  ActionInterface,
-} from "../../utils";
+import { data, Store, Product, State, ActionInterface } from "../../utils";
 
 export default function ProductScreen(): JSX.Element {
   const toast = useToast();
   const { state, dispatch } = useContext<{
-    state: CartInterface;
+    state: State;
     dispatch: Dispatch<ActionInterface>;
   }>(Store);
   const { query } = useRouter();
