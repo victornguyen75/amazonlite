@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { Layout, CheckoutWizard } from "components";
 import { Store, ShippingAddressInterface } from "utils";
 
-export default function Shipping() {
+export default function Shipping(): JSX.Element {
   const {
     handleSubmit,
     register,

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { Layout, useToast } from "components";
 import { getError } from "utils";
 
-export default function Login() {
+export default function Login(): JSX.Element {
   const { data: session } = useSession();
   const router = useRouter();
   const redirect = String(router.query.redirect || "/");

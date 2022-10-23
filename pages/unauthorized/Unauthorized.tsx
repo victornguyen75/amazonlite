@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { Layout } from "components";
 
-export default function Unauthorized() {
+export default function Unauthorized(): JSX.Element {
   const router = useRouter();
   const { message } = router.query;
 
