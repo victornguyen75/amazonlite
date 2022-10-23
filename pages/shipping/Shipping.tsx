@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { Layout, CheckoutWizard } from "../../components";
 import { Store, ShippingAddressInterface } from "../../utils";
@@ -12,6 +13,7 @@ export default function Shipping() {
     setValue,
   } = useForm();
 
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { shippingAddress } = cart;
@@ -54,6 +56,8 @@ export default function Shipping() {
         },
       })
     );
+
+    router.push("/payment");
   };
 
   return (
