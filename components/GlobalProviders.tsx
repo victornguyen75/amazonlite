@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { SessionProvider } from "next-auth/react";
 import { ToastProvider } from "../components";
 import { StoreProvider } from "../utils";
