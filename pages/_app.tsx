@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { GlobalProviders } from "../components";
 import "../styles/globals.css";
 
+// Can't figure out how to extend AppProps to include Component.auth,
+// so I'll replace AppProps with any for now
 const App = ({ Component, pageProps }: any): JSX.Element => {
   const { session, ...props } = pageProps;
   return (
