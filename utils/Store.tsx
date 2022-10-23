@@ -8,15 +8,29 @@ export const Store = createContext(undefined);
 export interface State {
   cart: CartInterface;
 }
+
+export interface ShippingAddressInterface {
+  fullName: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
 export interface CartInterface {
   items: Product[];
-  shippingAddress: { location: {} };
+  shippingAddress: ShippingAddressInterface;
   paymentMethod: string;
 }
 
 const defaultCart: CartInterface = {
   items: [],
-  shippingAddress: { location: {} },
+  shippingAddress: {
+    fullName: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    country: "",
+  },
   paymentMethod: "",
 };
 
@@ -64,6 +78,18 @@ const reducer = (state: State, action: Action) => {
       return {
         ...state,
         cart: defaultCart,
+      };
+    }
+    case "SAVE_SHIPPING_ADDRESS": {
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: {
+            ...state.cart.shippingAddress,
+            ...action.payload,
+          },
+        },
       };
     }
     default:
