@@ -1,5 +1,5 @@
-import { data } from "../utils";
-import { Layout, ProductItem } from "../components";
+import { Layout, ProductItem } from "components";
+import { data } from "utils";
 
 const Home = (): JSX.Element => (
   <Layout title="Home Page">

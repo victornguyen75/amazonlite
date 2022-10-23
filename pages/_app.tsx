@@ -1,4 +1,4 @@
-import { GlobalProviders, Auth } from "../components";
+import { GlobalProviders, Auth } from "components";
 import "../styles/globals.css";
 
 // Can't figure out how to extend AppProps to include Component.auth,

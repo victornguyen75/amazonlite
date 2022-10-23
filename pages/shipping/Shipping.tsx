@@ -2,8 +2,8 @@ import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
-import { Layout, CheckoutWizard } from "../../components";
-import { Store, ShippingAddressInterface } from "../../utils";
+import { Layout, CheckoutWizard } from "components";
+import { Store, ShippingAddressInterface } from "utils";
 
 export default function Shipping() {
   const {

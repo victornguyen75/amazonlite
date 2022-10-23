@@ -3,8 +3,8 @@ import Link from "next/link";
 import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { Layout, useToast } from "../../components";
-import { getError } from "../../utils";
+import { Layout, useToast } from "components";
+import { getError } from "utils";
 
 export default function Login() {
   const { data: session } = useSession();

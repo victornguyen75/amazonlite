@@ -5,8 +5,8 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { XCircleIcon } from "@heroicons/react/outline";
 
-import { useToast, Layout } from "../../components";
-import { Store, Product } from "../../utils";
+import { useToast, Layout } from "components";
+import { Store, Product } from "utils";
 
 const Cart = (): JSX.Element => {
   const toast = useToast();

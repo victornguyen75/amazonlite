@@ -11,8 +11,8 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Cookies from "js-cookie";
 
-import { Store, Product } from "../utils";
-import { UserMenu } from "./index";
+import { UserMenu } from "components";
+import { Store, Product } from "utils";
 
 interface LayoutProps {
   title: string;

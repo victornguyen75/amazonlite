@@ -1,5 +1,5 @@
-import { db, data } from "../../utils";
-import User from "../../models/User";
+import User from "models/User";
+import { db, data } from "utils";
 
 const handler = async (req, res) => {
   await db.connect();

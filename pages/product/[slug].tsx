@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-import { useToast, Layout } from "../../components";
-import { data, Store, Product, State, Action } from "../../utils";
+import { useToast, Layout } from "components";
+import { data, Store, Product, State, Action } from "utils";
 
 export default function ProductScreen(): JSX.Element {
   const toast = useToast();
