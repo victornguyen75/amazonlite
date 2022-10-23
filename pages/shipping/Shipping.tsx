@@ -152,3 +152,5 @@ export default function Shipping() {
 }
 
 Shipping.displayName = "Shipping";
+
+Shipping.auth = true;

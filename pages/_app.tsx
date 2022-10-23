@@ -1,13 +1,20 @@
 import React from "react";
-import { AppProps } from "next/app";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { GlobalProviders } from "../components";
 import "../styles/globals.css";
 
-const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+const App = ({ Component, pageProps }: any): JSX.Element => {
   const { session, ...props } = pageProps;
   return (
     <GlobalProviders session={session}>
-      <Component {...props} />
+      {Component.auth ? (
+        <Auth>
+          <Component {...props} />
+        </Auth>
+      ) : (
+        <Component {...props} />
+      )}
     </GlobalProviders>
   );
 };
@@ -15,3 +22,19 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
 App.displayName = "App";
 
 export default App;
+
+const Auth = ({ children }) => {
+  const router = useRouter();
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/unauthorized?message=login required");
+    },
+  });
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  return children;
+};
