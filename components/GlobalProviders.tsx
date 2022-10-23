@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { SessionProvider } from "next-auth/react";
-import { ToastProvider } from "../components";
+import { ToastProvider } from "./index";
 import { StoreProvider } from "../utils";
 
 interface ProviderProps {

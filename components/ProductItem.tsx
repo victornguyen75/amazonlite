@@ -2,8 +2,8 @@ import { useContext, Dispatch } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { useToast } from "./index";
 import { Store, Product, State, Action } from "../utils";
-import { useToast } from "../components";
 
 interface ProductItemProps {
   product: Product;
