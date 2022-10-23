@@ -1,7 +1,4 @@
-import React from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import { GlobalProviders } from "../components";
+import { GlobalProviders, Auth } from "../components";
 import "../styles/globals.css";
 
 // Can't figure out how to extend AppProps to include Component.auth,
@@ -24,19 +21,3 @@ const App = ({ Component, pageProps }: any): JSX.Element => {
 App.displayName = "App";
 
 export default App;
-
-const Auth = ({ children }) => {
-  const router = useRouter();
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      router.push("/unauthorized?message=login required");
-    },
-  });
-
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
-
-  return children;
-};
