@@ -18,7 +18,7 @@ const Cart = (): JSX.Element => {
 
   const removeItem = (item: Product) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
-    toast.pushSuccess("Successfully removed item");
+    toast.pushSuccess("Successfully removed the item");
   };
 
   const updateCart = (item: Product, quantity: number) => {
@@ -26,11 +26,11 @@ const Cart = (): JSX.Element => {
       type: "CART_ADD_ITEM",
       payload: { ...item, cartCount: quantity },
     });
-    toast.pushSuccess("Successfully updated item");
+    toast.pushSuccess("Successfully updated the item");
   };
 
   const handleCheckout = () => {
-    toast.pushInfo("Redirecting to checkout...");
+    toast.pushInfo("Redirecting to the checkout page...");
     router.push("login?redirect=/shipping");
   };
 
