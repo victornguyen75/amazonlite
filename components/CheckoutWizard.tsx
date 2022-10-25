@@ -3,7 +3,7 @@ interface CheckoutWizardProps {
 }
 
 export const CheckoutWizard = ({ activeStep = 0 }: CheckoutWizardProps) => {
-  const paymentSteps = [
+  const PAYMENT_STEPS = [
     "User Login",
     "Shipping Address",
     "Payment Method",
@@ -12,7 +12,7 @@ export const CheckoutWizard = ({ activeStep = 0 }: CheckoutWizardProps) => {
 
   return (
     <div className="mb-5 flex flex-wrap">
-      {paymentSteps.map((step, index) => (
+      {PAYMENT_STEPS.map((step, index) => (
         <div
           key={step}
           className={`flex-1 border-b-2 text-center ${coloredSteps(
