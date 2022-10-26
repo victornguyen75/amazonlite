@@ -1,6 +1,14 @@
 ## amazonlite
 
-An Amazon clone made with
+A full stack Amazon clone built with:
+
+- clothing products (on the home and individual pages)
+- a cart page
+- user authentication
+- a shipping address form
+- a checkout page
+
+Technologies used:
 
 - ReactJS
 - NextJS
