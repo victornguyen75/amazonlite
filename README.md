@@ -17,6 +17,7 @@ Technologies used:
 - Tailwind CSS
 - Headless UI
 - Cloud MongoDB
+- Mongoose
 
 Requirements
 
