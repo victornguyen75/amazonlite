@@ -2,11 +2,12 @@
 
 A full stack Amazon clone built with:
 
-- clothing products (on the home and individual pages)
+- clothing product pages
 - a cart page
-- user authentication
+- user authentication page
 - a shipping address form
 - a checkout page
+- seeded products and users that are uploaded to MongoDB
 
 Technologies used:
 
