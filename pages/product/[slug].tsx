@@ -3,21 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useToast, Layout } from "components";
-import { data, Store, Product, State, Action } from "utils";
+import ProductModel from "models/Product";
+import { Action, db, Product, State, Store } from "utils";
 
-export default function ProductScreen(): JSX.Element {
+interface ProductScreenProps {
+  product: Product;
+}
+export default function ProductScreen({
+  product,
+}: ProductScreenProps): JSX.Element {
   const toast = useToast();
   const { state, dispatch } = useContext<{
     state: State;
     dispatch: Dispatch<Action>;
   }>(Store);
-  const { query } = useRouter();
-  const { slug } = query;
-
-  const product = data.products.find((x) => x.slug === slug);
 
   if (!product) {
-    return <div>Product not found.</div>;
+    return <Layout title="Product not found.">Product not found.</Layout>;
   }
 
   const addToCart = () => {
@@ -78,7 +80,7 @@ export default function ProductScreen(): JSX.Element {
             </div>
             <div className="mb-2 flex-justify-between">
               <div>Status</div>
-              <div>{product.stockCount > 0 ? "in Stock" : "Unavailable"}</div>
+              <div>{product.stockCount > 0 ? "In Stock" : "Unavailable"}</div>
             </div>
             <button className="primary-button w-full" onClick={addToCart}>
               Add to Cart
@@ -91,3 +93,18 @@ export default function ProductScreen(): JSX.Element {
 }
 
 ProductScreen.displayName = "ProductScreen";
+
+export async function getServerSideProps(context) {
+  const {
+    params: { slug },
+  } = context;
+
+  await db.connect();
+  const product = await ProductModel.findOne({ slug }).lean();
+  await db.disconnect();
+  return {
+    props: {
+      product: product ? db.convertDocToObj(product) : null,
+    },
+  };
+}
