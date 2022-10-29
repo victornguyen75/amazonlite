@@ -25,7 +25,7 @@ export async function getServerSideProps() {
   const products = await ProductModel.find().lean();
   return {
     props: {
-      products: products.map(db.coverDocToObj),
+      products: products.map(db.convertDocToObj),
     },
   };
 }
