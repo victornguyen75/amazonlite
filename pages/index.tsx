@@ -23,8 +23,7 @@ const Home = ({ products }: HomeProps): JSX.Element => {
     const { data } = await axios.get(`/api/products/${product._id}`);
 
     if (data.stockCount < cartCount) {
-      toast.pushWarning("Sorry! This product is now out of stock.");
-      return;
+      return toast.pushWarning("Sorry! This product is now out of stock.");
     }
 
     dispatch({

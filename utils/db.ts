@@ -14,15 +14,13 @@ const connect = async () => {
     const mongoose = (await import("mongoose")).default;
 
     if (connection.isConnected) {
-      console.log("Already connected");
-      return;
+      return console.log("Already connected");
     }
 
     if (mongoose.connections.length > 0) {
       connection.isConnected = mongoose.connections[0].readyState;
       if (connection.isConnected === 1) {
-        console.log("Use previous connection");
-        return;
+        return console.log("Use previous connection");
       }
 
       await mongoose.disconnect();
