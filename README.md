@@ -15,6 +15,7 @@ Technologies used:
 - TypeScript
 - Tailwind CSS
 - Headless UI
+- Axios
 - Cloud MongoDB
 - Mongoose
 
