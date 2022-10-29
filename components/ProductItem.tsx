@@ -1,41 +1,16 @@
-import { useContext, Dispatch } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useToast } from "components";
-import { Store, Product, State, Action } from "utils";
+import { Product } from "utils";
 
 interface ProductItemProps {
+  addToCart: (product: Product) => void;
   product: Product;
 }
 
-export const ProductItem = ({ product }: ProductItemProps): JSX.Element => {
-  const toast = useToast();
-  const { state, dispatch } = useContext<{
-    state: State;
-    dispatch: Dispatch<Action>;
-  }>(Store);
-
-  const addToCart = () => {
-    const existingItem: Product = state.cart.items.find(
-      (x: Product) => x.slug === product.slug
-    );
-    const cartCount: number = existingItem ? existingItem.cartCount + 1 : 1;
-
-    if (product.stockCount < cartCount) {
-      toast.pushWarning("Sorry! This product is now out of stock.");
-      return;
-    }
-
-    dispatch({
-      type: "CART_ADD_ITEM",
-      payload: {
-        ...product,
-        cartCount,
-      },
-    });
-    toast.pushSuccess("Item added");
-  };
-
+export const ProductItem = ({
+  product,
+  addToCart,
+}: ProductItemProps): JSX.Element => {
   return (
     <div className="card">
       <Link href={`/product/${product.slug}`}>
@@ -58,7 +33,11 @@ export const ProductItem = ({ product }: ProductItemProps): JSX.Element => {
         </Link>
         <p className="mb-2">{product.brand}</p>
         <p>${product.price}</p>
-        <button className="primary-button" type="button" onClick={addToCart}>
+        <button
+          className="primary-button"
+          type="button"
+          onClick={() => addToCart(product)}
+        >
           Add to cart
         </button>
       </div>
