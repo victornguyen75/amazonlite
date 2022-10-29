@@ -12,6 +12,7 @@ export interface Product {
   stockCount: number;
   cartCount: number;
   description: string;
+  _id?: string;
 }
 
 export interface User {

@@ -1,4 +1,5 @@
 import { useContext, Dispatch } from "react";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useToast, Layout } from "components";
@@ -11,23 +12,24 @@ interface ProductScreenProps {
 export default function ProductScreen({
   product,
 }: ProductScreenProps): JSX.Element {
-  const toast = useToast();
   const { state, dispatch } = useContext<{
     state: State;
     dispatch: Dispatch<Action>;
   }>(Store);
+  const toast = useToast();
 
   if (!product) {
     return <Layout title="Product not found.">Product not found.</Layout>;
   }
 
-  const addToCart = () => {
+  const addToCart = async () => {
     const existingItem: Product = state.cart.items.find(
       (x: Product) => x.slug === product.slug
     );
     const cartCount: number = existingItem ? existingItem.cartCount + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
 
-    if (product.stockCount < cartCount) {
+    if (data.stockCount < cartCount) {
       toast.pushWarning("Sorry! This product is now out of stock.");
       return;
     }
