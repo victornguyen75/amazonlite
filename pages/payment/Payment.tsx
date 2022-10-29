@@ -1,6 +1,6 @@
-import { MouseEventHandler, useState, useContext, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useState, useContext, useEffect } from "react";
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 import { CheckoutWizard, Layout, useToast } from "components";
 import { Store } from "utils";
 

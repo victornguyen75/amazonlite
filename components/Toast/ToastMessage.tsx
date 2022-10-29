@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import clsx from "clsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
   faExclamationCircle,
   faCheck,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from "clsx";
 import { Toast } from "./ToastProvider";
 
 const VARIANTS = {

@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import { XCircleIcon } from "@heroicons/react/outline";
-
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useToast, Layout } from "components";
 import { Store, Product } from "utils";
 

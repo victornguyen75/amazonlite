@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import clsx from "clsx";
-
 import { ToastMessage } from "./ToastMessage";
 import { ToastContext } from "./ToastProvider";
 

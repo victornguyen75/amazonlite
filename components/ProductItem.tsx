@@ -1,7 +1,6 @@
 import { useContext, Dispatch } from "react";
-import Link from "next/link";
 import Image from "next/image";
-
+import Link from "next/link";
 import { useToast } from "components";
 import { Store, Product, State, Action } from "utils";
 

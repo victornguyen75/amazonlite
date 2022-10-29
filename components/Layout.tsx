@@ -1,16 +1,8 @@
-import {
-  useState,
-  useEffect,
-  useMemo,
-  useContext,
-  ReactNode,
-  Fragment,
-} from "react";
+import { useState, useEffect, useContext, ReactNode, Fragment } from "react";
+import Cookies from "js-cookie";
+import { useSession, signOut } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import { useSession, signOut } from "next-auth/react";
-import Cookies from "js-cookie";
-
 import { UserMenu } from "components";
 import { Store, Product } from "utils";
 

@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Menu } from "@headlessui/react";
 import Link from "next/link";
-
 import { User } from "./index";
 
 interface UserMenuProps {
