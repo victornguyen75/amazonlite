@@ -100,6 +100,9 @@ const reducer = (state: State, action: Action) => {
         },
       };
     }
+    case "CART_CLEAR_ITEMS": {
+      return { ...state, cart: { ...state.cart, items: [] } };
+    }
     default:
       return state;
   }
