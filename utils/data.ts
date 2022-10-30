@@ -12,7 +12,7 @@ export interface Product {
   stockCount: number;
   cartCount: number;
   description: string;
-  _id?: string;
+  _id?: string; // comes from MongoDB
 }
 
 export interface User {
@@ -20,6 +20,7 @@ export interface User {
   email: string;
   password: string;
   isAdmin: boolean;
+  _id?: string; // comes from MongoDB
 }
 
 export interface dataProps {
