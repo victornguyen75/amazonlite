@@ -1,6 +1,5 @@
 import { createContext, useReducer, ReactNode } from "react";
 import Cookies from "js-cookie";
-
 import { Product } from "./data";
 
 export const Store = createContext(undefined);
