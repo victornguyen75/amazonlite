@@ -64,7 +64,7 @@ export default function Shipping(): JSX.Element {
     <Layout title="Shipping Address">
       <CheckoutWizard activeStep={1} />
       <form
-        className="mx-auto max-w-wscreen-md"
+        className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
         <h1 className="mb-4 text-xl">Shipping Address</h1>
