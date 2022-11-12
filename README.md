@@ -2,9 +2,10 @@
 
 A full stack Amazon clone built with:
 
-- clothing product pages that pull product data from MongoDB
+- product pages that pull clothing stock data from MongoDB
 - a cart page
 - a user login page with an API that authenticates users in MongoDB
+- an account creation page with an API that creates users in MongoDB
 - a shipping address form page
 - a payment method page
 - an order finalization page
