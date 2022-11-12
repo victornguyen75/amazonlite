@@ -93,7 +93,7 @@ export default function Login(): JSX.Element {
         </div>
         <div className="mb-4">
           Don&apos;t have an account? &nbsp;
-          <Link href="/register">
+          <Link href={`/register?redirect=${redirect || "/"}`}>
             <span className="cursor-pointer text-blue-600 hover:text-blue-800">
               Register
             </span>
