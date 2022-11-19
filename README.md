@@ -11,6 +11,7 @@ A full stack Amazon clone built with:
 - an order finalization page
 - an order receipt page
 - payments made with the PayPal API
+- an order history page
 
 ## Technologies used:
 
