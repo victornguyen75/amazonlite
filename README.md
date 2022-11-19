@@ -1,4 +1,4 @@
-## amazonlite
+# amazonlite
 
 A full stack Amazon clone built with:
 
@@ -10,9 +10,9 @@ A full stack Amazon clone built with:
 - a payment method page
 - an order finalization page
 - an order receipt page
-- payments made with PayPal
+- payments made with the PayPal API
 
-Technologies used:
+## Technologies used:
 
 - ReactJS
 - NextJS
@@ -23,8 +23,15 @@ Technologies used:
 - Cloud MongoDB
 - Mongoose
 
-Requirements
+## Requirements
 
 - an account with Cloud MongoDB (free version is available)
 - a MongoDB connection set as the `MONGODB_URI` env variable
 - a developer account with PayPal
+
+## Set up
+
+1. Clone the project with git clone https://github.com/victornguyen75/amazonlite.git in the terminal
+2. Install dependencies with `yarn install` or `npm install`
+3. Start the server with `yarn start` or `npm start`
+4. Open a browser tab with http://localhost:3000/ to see the application
