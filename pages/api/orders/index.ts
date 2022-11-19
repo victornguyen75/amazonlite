@@ -5,7 +5,7 @@ import { db } from "utils";
 export default async function handler(req, res) {
   const session = await getSession({ req });
   if (!session) {
-    return res.status(401).send("Sign in required");
+    return res.status(401).send("Error: sign in required");
   }
 
   const { user } = session;
