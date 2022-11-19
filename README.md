@@ -22,12 +22,14 @@ A full stack Amazon clone built with:
 - Axios
 - Cloud MongoDB
 - Mongoose
+- PayPal
 
 ## Requirements
 
 - an account with Cloud MongoDB (free version is available)
 - a MongoDB connection set as the `MONGODB_URI` env variable
 - a developer account with PayPal
+- a PayPal Client ID set as the `PAYPAY_CLIENT_ID` env variable
 
 ## Set up
 
