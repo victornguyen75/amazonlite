@@ -10,6 +10,7 @@ A full stack Amazon clone built with:
 - a payment method page
 - an order finalization page
 - an order receipt page
+- payments made with PayPal
 
 Technologies used:
 
@@ -26,3 +27,4 @@ Requirements
 
 - an account with Cloud MongoDB (free version is available)
 - a MongoDB connection set as the `MONGODB_URI` env variable
+- a developer account with PayPal
