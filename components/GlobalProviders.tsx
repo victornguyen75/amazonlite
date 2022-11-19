@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { SessionProvider } from "next-auth/react";
 import { ToastProvider } from "components";
 import { StoreProvider } from "utils";
@@ -27,7 +28,9 @@ export const GlobalProviders = ({
 }: ProviderProps): JSX.Element => (
   <SessionProvider session={session}>
     <StoreProvider>
-      <ToastProvider>{children}</ToastProvider>
+      <PayPalScriptProvider deferLoading={true} options={undefined}>
+        <ToastProvider>{children}</ToastProvider>
+      </PayPalScriptProvider>
     </StoreProvider>
   </SessionProvider>
 );
