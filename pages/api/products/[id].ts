@@ -1,3 +1,4 @@
+// @ts-nocheck for ProductModel.findById() for line 7
 import ProductModel from "models/Product";
 import { db } from "utils";
 

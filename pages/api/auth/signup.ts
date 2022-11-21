@@ -1,3 +1,4 @@
+// @ts-nocheck for User.findOne() at line 25
 import bcryptjs from "bcryptjs";
 import User from "models/User";
 import { db } from "utils";

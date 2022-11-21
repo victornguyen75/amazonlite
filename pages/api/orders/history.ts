@@ -1,3 +1,4 @@
+// @ts-nocheck for Order.find() at line 14
 import { getSession } from "next-auth/react";
 import Order from "models/Order";
 import { db } from "utils";

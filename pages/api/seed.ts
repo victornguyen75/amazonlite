@@ -1,3 +1,4 @@
+// @ts-nocheck for UserModel.deleteMany() on line 9 and ProductModel.deleteMany() on line 11
 import ProductModel from "models/Product";
 import UserModel from "models/User";
 import { db, data } from "utils";

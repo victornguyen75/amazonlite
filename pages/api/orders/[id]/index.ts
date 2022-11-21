@@ -1,3 +1,4 @@
+// @ts-nocheck for OrderModel.findById() at line 13
 import { getSession } from "next-auth/react";
 import OrderModel from "models/Order";
 import { db } from "utils";

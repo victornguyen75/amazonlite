@@ -1,3 +1,4 @@
+// @ts-nocheck for ProductModel.find() at line 62
 import { useContext, Dispatch } from "react";
 import axios from "axios";
 import { Layout, ProductItem, useToast } from "components";

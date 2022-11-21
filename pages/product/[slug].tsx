@@ -1,3 +1,4 @@
+// @ts-nocheck for ProductModel.findOne() at line 104
 import { useContext, Dispatch } from "react";
 import axios from "axios";
 import Image from "next/image";

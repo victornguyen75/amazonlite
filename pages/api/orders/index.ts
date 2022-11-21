@@ -1,3 +1,4 @@
+// @ts-nocheck for user._id at line 16
 import { getSession } from "next-auth/react";
 import OrderModel from "models/Order";
 import { db } from "utils";
