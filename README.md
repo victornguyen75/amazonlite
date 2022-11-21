@@ -1,6 +1,6 @@
 # amazonlite
 
-A full stack Amazon clone deployed on Vercel as https://amazonlite-tau.vercel.app/. Please see [Live Demo](Live-Demo) for more details.
+A full stack Amazon clone deployed on Vercel (https://amazonlite-tau.vercel.app/). Please see the [Live Demo](https://github.com/victornguyen75/amazonlite#live-demo) section for more details.
 
 ![Amazonlite Home Page](/public/images/homepage.png)
 
@@ -18,6 +18,7 @@ This e-commerce application is built with:
 - an order receipt page
 - payments made with the PayPal API
 - an order history page
+- a profile update page
 
 ## Technologies used:
 
