@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import { Layout, useToast } from "components";
 import { getError, Product } from "utils";
 
-export default function Order() {
+export default function Order(): JSX.Element {
   const {
     query: { id: orderId },
   } = useRouter();
