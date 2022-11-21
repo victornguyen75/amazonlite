@@ -1,6 +1,12 @@
 # amazonlite
 
-A full stack Amazon clone built with:
+A full stack Amazon clone deployed on Vercel as https://amazonlite-tau.vercel.app/. Please see [Live Demo](Live-Demo) for more details.
+
+![Amazonlite Home Page](/public/images/homepage.png)
+
+## Functionality
+
+This e-commerce application is built with:
 
 - product pages that pull clothing stock data from MongoDB
 - a cart page
@@ -24,6 +30,7 @@ A full stack Amazon clone built with:
 - Cloud MongoDB
 - Mongoose
 - PayPal
+- Vercel
 
 ## Requirements
 
@@ -37,4 +44,10 @@ A full stack Amazon clone built with:
 1. Clone the project with git clone https://github.com/victornguyen75/amazonlite.git in the terminal
 2. Install dependencies with `yarn install` or `npm install`
 3. Start the server with `yarn start` or `npm start`
-4. Open a browser tab with http://localhost:3000/ to see the application
+4. Open a browser tab with http://localhost:3000/api/seed to set the product data on the application.
+5. Change the URL to http://localhost:3000 to see the application
+
+## Live Demo
+
+1. Open a browser tab with https://amazonlite-tau.vercel.app//api/seed to set the product data on the application.
+2. Change the URL to https://amazonlite-tau.vercel.app/ to see the application
